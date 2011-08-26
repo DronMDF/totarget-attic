@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import android.widget.Toast;
-import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 
 public class toTarget extends Activity
 {
@@ -16,7 +14,7 @@ public class toTarget extends Activity
 	private ListView listView;
 	private ArrayAdapter listAdapter;
 
-	private final OnKeyListener keyListener = new OnKeyListener() {
+	private final View.OnKeyListener keyListener = new View.OnKeyListener() {
 		public boolean onKey(View view, int keyCode, KeyEvent event) {
 			if (keyCode != KeyEvent.KEYCODE_ENTER) {
 				return false;
@@ -51,6 +49,5 @@ public class toTarget extends Activity
 		String task = inputView.getText().toString();
 		listAdapter.add(task);
 		inputView.setText("");
-
 	}
 }
