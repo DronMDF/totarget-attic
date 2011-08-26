@@ -2,15 +2,19 @@ package com.mdf.totarget;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Toast;
-import android.widget.EditText;
-import android.view.View.OnKeyListener;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
 
 public class toTarget extends Activity
 {
 	private EditText inputView;
+	private ListView listView;
+	private ArrayAdapter listAdapter;
 
 	private final OnKeyListener keyListener = new OnKeyListener() {
 		public boolean onKey(View view, int keyCode, KeyEvent event) {
@@ -35,12 +39,18 @@ public class toTarget extends Activity
 
 		inputView = (EditText)findViewById(R.id.edittext);
 		inputView.setOnKeyListener(keyListener);
+		
+		listAdapter = new ArrayAdapter<String>(this, R.layout.list_item);
+
+		listView = (ListView)findViewById(R.id.listview);
+		listView.setAdapter(listAdapter);
 	}
 
 	private void addTask()
 	{
 		String task = inputView.getText().toString();
-		Toast.makeText(toTarget.this, task, Toast.LENGTH_SHORT).show();
+		listAdapter.add(task);
 		inputView.setText("");
+
 	}
 }
