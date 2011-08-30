@@ -2,18 +2,9 @@ package com.mdf.totarget;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.KeyEvent;
 import android.widget.EditText;
 
-/**
- * This is a simple framework for a test of an Application.  See
- * {@link android.test.ApplicationTestCase ApplicationTestCase} for more information on
- * how to write and extend Application tests.
- * <p/>
- * To run this test, you can type:
- * adb shell am instrument -w \
- * -e class com.mdf.totarget.toTargetTest \
- * com.mdf.totarget.tests/android.test.InstrumentationTestRunner
- */
 public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 
 	private Activity activity;
@@ -32,6 +23,19 @@ public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 	}
 
 	public void testEditBoxEmptyAfterInit() {
+		assertEquals(editbox.getText().toString(), "");
+	}
+
+	public void testEditBoxEmptyAfterEnter() {
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				editbox.requestFocus();
+			}
+		});
+
+		sendKeys(KeyEvent.KEYCODE_T, KeyEvent.KEYCODE_E, KeyEvent.KEYCODE_S, KeyEvent.KEYCODE_T);
+		assertEquals(editbox.getText().toString(), "test");
+		sendKeys(KeyEvent.KEYCODE_ENTER);
 		assertEquals(editbox.getText().toString(), "");
 	}
 }
