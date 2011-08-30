@@ -1,6 +1,8 @@
 package com.mdf.totarget;
 
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.widget.EditText;
 
 /**
  * This is a simple framework for a test of an Application.  See
@@ -14,8 +16,22 @@ import android.test.ActivityInstrumentationTestCase2;
  */
 public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 
-    public toTargetTest() {
-        super("com.mdf.totarget", toTarget.class);
-    }
+	private Activity activity;
+	private EditText editbox;
 
+	public toTargetTest() {
+		super("com.mdf.totarget", toTarget.class);
+	}
+
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+		setActivityInitialTouchMode(false);
+		activity = getActivity();
+		editbox = (EditText)activity.findViewById(R.id.edittext);
+	}
+
+	public void testEditBoxEmptyAfterInit() {
+		assertEquals(editbox.getText().toString(), "");
+	}
 }
