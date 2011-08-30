@@ -16,16 +16,12 @@ public class toTarget extends Activity
 
 	private final View.OnKeyListener keyListener = new View.OnKeyListener() {
 		public boolean onKey(View view, int keyCode, KeyEvent event) {
-			if (keyCode != KeyEvent.KEYCODE_ENTER) {
-				return false;
+			if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+				addTask();
+				return true;
 			}
 
-			if (event.getAction() != KeyEvent.ACTION_DOWN) {
-				return false;
-			}
-
-			addTask();
-			return true;
+			return false;
 		}
 	};
 
