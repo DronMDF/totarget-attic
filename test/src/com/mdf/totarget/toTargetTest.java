@@ -27,11 +27,11 @@ public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 	}
 
 	public void testEditBoxEmptyAfterEnter() {
-		activity.runOnUiThread(new Runnable() {
-			public void run() {
-				editbox.requestFocus();
-			}
-		});
+		//activity.runOnUiThread(new Runnable() {
+		//	public void run() {
+		//		editbox.requestFocus();
+		//	}
+		//});
 
 		sendKeys(KeyEvent.KEYCODE_T, KeyEvent.KEYCODE_E, KeyEvent.KEYCODE_S, KeyEvent.KEYCODE_T);
 		assertEquals(editbox.getText().toString(), "test");
