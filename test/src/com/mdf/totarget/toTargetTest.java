@@ -33,9 +33,9 @@ public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 		//	}
 		//});
 
-		sendKeys(KeyEvent.KEYCODE_T, KeyEvent.KEYCODE_E, KeyEvent.KEYCODE_S, KeyEvent.KEYCODE_T);
+		sendKeys("T E S T");
 		assertEquals(editbox.getText().toString(), "test");
-		sendKeys(KeyEvent.KEYCODE_ENTER);
+		sendKeys("ENTER");
 		assertEquals(editbox.getText().toString(), "");
 	}
 }
