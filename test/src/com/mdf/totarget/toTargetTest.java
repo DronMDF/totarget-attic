@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.KeyEvent;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 
-	private Activity activity;
 	private EditText editbox;
+	private ListView listview;
 
 	public toTargetTest() {
 		super("com.mdf.totarget", toTarget.class);
@@ -18,8 +19,10 @@ public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 	protected void setUp() throws Exception {
 		super.setUp();
 		setActivityInitialTouchMode(false);
-		activity = getActivity();
+
+		Activity activity = getActivity();
 		editbox = (EditText)activity.findViewById(R.id.edittext);
+		listview = (ListView)activity.findViewById(R.id.listview);
 	}
 
 	public void testEditBoxEmptyAfterInit() {
@@ -38,4 +41,12 @@ public class toTargetTest extends ActivityInstrumentationTestCase2<toTarget> {
 		sendKeys("ENTER");
 		assertEquals(editbox.getText().toString(), "");
 	}
+
+	public void testTaskPushIntoFirstLine() {
+		sendKeys("F I R S T ENTER");
+		sendKeys("S E C O N D ENTER");
+		assertEquals(listview.getAdapter().getItem(0).toString(), "second");
+		assertEquals(listview.getAdapter().getItem(1).toString(), "first");
+	}
+
 }

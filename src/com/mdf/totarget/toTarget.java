@@ -43,7 +43,7 @@ public class toTarget extends Activity
 	private void addTask()
 	{
 		String task = inputView.getText().toString();
-		listAdapter.add(task);
+		listAdapter.insert(task, 0);
 		inputView.setText("");
 	}
 }
