@@ -34,7 +34,7 @@ public class toTarget extends Activity
 		inputView = (EditText)findViewById(R.id.edittext);
 		inputView.setOnKeyListener(keyListener);
 		
-		listAdapter = new ArrayAdapter<String>(this, R.layout.list_item);
+		listAdapter = new ArrayAdapter<String>(this, R.layout.task_item);
 
 		listView = (ListView)findViewById(R.id.listview);
 		listView.setAdapter(listAdapter);
